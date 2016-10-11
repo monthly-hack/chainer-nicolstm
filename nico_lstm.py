@@ -222,7 +222,7 @@ def main():
     trainer.extend(extensions.snapshot_object(
         model, 'model_iter_{.updater.iteration}'))
     if args.resume:
-        chainer.serializers.load_npz(args.resume, trainer)
+        chainer.serializers.load_npz(args.resume, model)
 
     @training.make_extension(trigger=(500, 'iteration'))
     def save_model(trainer):
