@@ -30,7 +30,7 @@ def get_comment(targz):
         comments = comments[-11:-1]
         for comment in comments:
             try:
-                comment = eval(comment)['comment']  # string to dict
+                comment = eval(comment)['comment']
                 result.append(comment)
             except:
                 print('null')
