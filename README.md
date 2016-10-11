@@ -1,6 +1,8 @@
 # chainer-nicolstm
 Chainer implementation of estimation next word from current words.   
-([http://qiita.com/ixixi/items/a3d56b2db6e09249a519](http://qiita.com/ixixi/items/a3d56b2db6e09249a519))   
+([http://qiita.com/ixixi/items/a3d56b2db6e09249a519](http://qiita.com/ixixi/items/a3d56b2db6e09249a519))  
+
+## About
 This model trains niconico-douga comments, estimates comment from bag-of-comment. For example,  
 
 |**Input**|**Output**|  
