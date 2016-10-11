@@ -12,19 +12,6 @@ with open('./sample_vocab.pkl', 'rb') as f:
     vocab += ['<soc>', '<eoc>']  # start of comment, end of comment
     index2vocab = {i: word for i, word in enumerate(vocab)}
     vocab2index = {word: i for i, word in enumerate(vocab)}
-with open('./sample_texts.pkl', 'rb') as f:
-    texts = pickle.load(f)
-    train = []
-    for text in texts:
-        train.append(vocab2index['<soc>'])
-        for i in text:
-            train.append(vocab2index[i])
-        train.append(vocab2index['<eoc>'])
-
-n_vocab = max(train) + 1  # train is just an array of integers
-print('#vocab =', n_vocab)
-n_train = len(train)  # train is just an array of integers
-print('#train =', n_train)
 
 rnn = nico_lstm.RNNForLM(n_vocab, 650)
 model = L.Classifier(rnn)
