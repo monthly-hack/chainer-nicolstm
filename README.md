@@ -1,6 +1,6 @@
 # chainer-nicolstm
 Chainer implementation of estimation next word from current words.   
-[http://qiita.com/ixixi/items/a3d56b2db6e09249a519](http://qiita.com/ixixi/items/a3d56b2db6e09249a519)   
+([http://qiita.com/ixixi/items/a3d56b2db6e09249a519](http://qiita.com/ixixi/items/a3d56b2db6e09249a519))   
 This model trains niconico-douga comments, estimates comment from bag-of-comment. For example,  
 
 |**Input**|**Output**|  
@@ -13,6 +13,8 @@ This model trains niconico-douga comments, estimates comment from bag-of-comment
 |ξ*・|ξ*・ヮ・*|  
 |わっふ|わっふるわっふる|  
 |かわい|かわいいww|  
+
+More description (in Japanese) is here . ([http://www.monthly-hack.com/](http://www.monthly-hack.com/))  
 
 ## Requirements
 - Python 2.7 or 3.4
