@@ -1,7 +1,5 @@
 # coding: utf-8
 """
-please in English
-予め maesyori1.py を実行して、last10comments.pklを生成してください。
 $ python maeshori2.py
 """
 import pickle
@@ -38,9 +36,9 @@ for comment in sample_comments:
 
     for letter in text:
         if letter not in vocab:
-            vocab[i] = 1
+            vocab[letter] = 1
         else:
-            vocab[i] += 1
+            vocab[letter] += 1
         if letter == before:
             before_count += 1
         else:
@@ -74,7 +72,7 @@ logging.info('Start exclude')
 processes = max(1, multiprocessing.cpu_count() - 1)
 p = multiprocessing.Pool(processes)
 new_texts = p.map(huga, texts)
-new_texts = [letter for letter in new_texts if i is not None or '']
+new_texts = [letter for letter in new_texts if letter is not None or '']
 logging.info('End exclude')
 logging.info('new_texts {}'.format(len(new_texts)))
 logging.info('new_vocab {}'.format(len(new_vocab)))
