@@ -10,7 +10,7 @@ import logging
 import multiprocessing
 
 
-folder_path = sys.argv[1]
+folder_path = sys.argv[1].rstrip('/')
 log_fn = 'log1.txt'
 logging.basicConfig(
     format='%(asctime)s [%(levelname)s] %(message)s',
@@ -23,6 +23,7 @@ def get_comment(targz):
     result = []
     tf = tarfile.open(targz, 'r')
     item_list = tf.getnames()[1:]
+    # what is ti?
     for ti in item_list:
         f = tf.extractfile(ti).read()
         comments = f.decode('utf-8').split('\n')
@@ -37,6 +38,7 @@ def get_comment(targz):
     logging.info('end of {}'.format(targz))
     return result
 
+# please more explain(what is "-1")
 processes = max(1, multiprocessing.cpu_count() - 1)
 p = multiprocessing.Pool(processes)
 results = p.map(get_comment, targz_list)
