@@ -25,10 +25,10 @@ def make_comment(word):
         return '{} is not in vocab'.format(word)
 
     rnn.reset_state()
-    init = rnn(np.asarray([vocab2index['<soc>']], dtype=np.int32))
+    init = rnn(np.asarray([vocab2index['<soc>']], dtype=np.int32), train=False)
     comment = ''
     for i in list(com):
-        a = rnn(np.asarray([vocab2index[i]], dtype=np.int32))
+        a = rnn(np.asarray([vocab2index[i]], dtype=np.int32), train=False)
         comment += i
 
     while True:
@@ -38,7 +38,7 @@ def make_comment(word):
         elif len(comment) > 20:
             break
         comment += now
-        a = rnn(np.asarray([vocab2index[now]], dtype=np.int32))
+        a = rnn(np.asarray([vocab2index[now]], dtype=np.int32), train=False)
 
     return comment
 
