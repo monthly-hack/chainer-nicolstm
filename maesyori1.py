@@ -10,7 +10,7 @@ import logging
 import multiprocessing
 
 
-folder_path = sys.argv[1]
+folder_path = sys.argv[1].rstrip('/')
 log_fn = 'log1.txt'
 logging.basicConfig(
     format='%(asctime)s [%(levelname)s] %(message)s',
