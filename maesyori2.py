@@ -1,5 +1,6 @@
 # coding: utf-8
 """
+please in English
 予め maesyori1.py を実行して、last10comments.pklを生成してください。
 $ python maeshori2.py
 """
@@ -18,8 +19,7 @@ logging.info('Open comments file')
 with open('last10comments.pkl', 'rb') as f:
     comments = pickle.load(f)
     comments = [c for tf in comments for c in tf]
-    random.shuffle(comments)
-    sample_comments = comments[:5000000]
+    sample_comments = np.random.choice(comments, 5000000, replace=False)
 logging.info('Done shuffle and sampling')
 
 n_data = len(sample_comments)
@@ -28,24 +28,24 @@ texts = []
 logging.info('Sampling {} comments'.format(n_data))
 
 logging.info('Start NFKC')
-for text in sample_comments:
+for comment in sample_comments:
     before = ''
     before_count = -2
     try:
-        text = unicodedata.normalize('NFKC', text)
+        text = unicodedata.normalize('NFKC', comment)
     except:
         text = ''
 
-    for i in text:
-        if i not in vocab:
+    for letter in text:
+        if letter not in vocab:
             vocab[i] = 1
         else:
             vocab[i] += 1
-        if i == before:
+        if letter == before:
             before_count += 1
         else:
             before_count = -2
-        before = i
+        before = letter
 
     if before_count >= 1:
         texts.append(text[:-before_count])
@@ -56,11 +56,10 @@ logging.info('End NFKC')
 logging.info('n_texts {}'.format(len(texts)))
 logging.info('n_vocab {}'.format(len(vocab)))
 
-tmp = sorted(vocab.items(), key=lambda x: x[1])
-tmp.reverse()
+tmp = sorted(vocab.items(), key=lambda x: x[1], reverse=True)
 new_vocab = [i for i, j in tmp[:5000]]
 
-
+# what is huga
 def huga(text):
     flag = True
     for i in text:
@@ -75,7 +74,7 @@ logging.info('Start exclude')
 processes = max(1, multiprocessing.cpu_count() - 1)
 p = multiprocessing.Pool(processes)
 new_texts = p.map(huga, texts)
-new_texts = [i for i in new_texts if i is not None or '']
+new_texts = [letter for letter in new_texts if i is not None or '']
 logging.info('End exclude')
 logging.info('new_texts {}'.format(len(new_texts)))
 logging.info('new_vocab {}'.format(len(new_vocab)))
