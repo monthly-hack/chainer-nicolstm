@@ -16,7 +16,7 @@ This model trains niconico-douga comments, estimates comment from bag-of-comment
 |わっふ|わっふるわっふる|  
 |かわい|かわいいww|  
 
-More description (in Japanese) is here . ([http://www.monthly-hack.com/](http://www.monthly-hack.com/))  
+More description is here. ( [http://www.monthly-hack.com/](http://www.monthly-hack.com/) )  
 
 ## Requirements
 - Python 2.7 or 3.4
@@ -45,11 +45,11 @@ $ python maesyori2.py
 Train comment-data by lstm.   
 It outputs '/result/lstm_model.npz'.
 ```
-$ python nico_lstm.py -g <gpu_id
+$ python nico_lstm.py -g <gpu_id>
 ```
 ### Step5
-Play generating comment.   
-Input bag of comment.
+Play generating comments.   
+Input bag of comments.
 ```
 $ python play_lstm.py
 >> ┗(^
