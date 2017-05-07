@@ -13,6 +13,7 @@ with open('./sample_vocab.pkl', 'rb') as f:
     index2vocab = {i: word for i, word in enumerate(vocab)}
     vocab2index = {word: i for i, word in enumerate(vocab)}
 
+n_vocab = len(index2vocab)
 rnn = nico_lstm.RNNForLM(n_vocab, 650)
 model = L.Classifier(rnn)
 S.load_npz('./result/lstm_model.npz', model)
